@@ -1,4 +1,15 @@
+# The Rails router recognizes URLs and dispatches them to a controller’s action. 
+# It can also generate paths and URLs, avoiding the need to hardcode strings in your views.
+
 DepotApp::Application.routes.draw do
+  get 'admin' => 'admin#index'  #this way the user only needs to enter /admin
+  
+  controller :sessions do
+    get 'login' => :new #session/new action
+    post 'login' => :create #session/create action
+    delete 'logout' => :destroy #session/destroy action
+  end
+  
   resources :users
 
   resources :orders
