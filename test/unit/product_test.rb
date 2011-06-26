@@ -54,7 +54,7 @@ class ProductTest < ActiveSupport::TestCase
     end
   end
   
-  #now do a test with the fixture
+  #now do a test with the fixture data from products.yml
   test "product is not valid without a unique title" do 
     product = Product.new(:title	=> products(:ruby).title,
                           :description => "yyy", 
@@ -63,5 +63,10 @@ class ProductTest < ActiveSupport::TestCase
     assert !product.save
     assert_equal "has already been taken", product.errors[:title].join('; ')
   end
+  
+  # test "product title length must be at least 10 chars" do
+  #   aProduct = new_product('image.jpg')
+  #   assert aProduct.title.length > 10, "#{aProduct.title} has length #{aProduct.title.length}<10!"
+  # end
   
 end
