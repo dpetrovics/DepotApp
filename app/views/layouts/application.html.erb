@@ -16,10 +16,10 @@
 	
 	<div id="columns">
 		<div id="side">
-			<a href="http://www....">Home</a> <br />
-			<a href="http://www..../faq">Questions</a><br /> 
-			<a href="http://www..../news">News</a><br /> 
-			<a href="http://www..../contact">Contact</a><br />
+			<%= link_to 'Home (Store)', store_path%> <br />
+			<%= link_to 'Products', products_path%> <br />
+			<%= link_to 'Line Items', line_items_path%> <br />
+			<%= link_to 'Carts', carts_path%> <br />
 		</div>
 		<div id="main">
 			<%= yield%>

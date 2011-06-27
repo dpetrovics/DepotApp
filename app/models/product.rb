@@ -1,13 +1,13 @@
 class Product < ActiveRecord::Base
   default_scope :order => 'title'   #will return product lists in alphabetical order
   
-  has_many :line_items
+  has_many :line_items    #with multiple carts ea product could have many line items referencing it
   
-  before_destroy :ensure_not_referenced_by_any_line_item  #'hook' method
+  before_destroy :ensure_not_referenced_by_any_line_item  #'hook' method, called automatically at a certain pt in objects life
   
   # ensure that there are no line items referencing this product 
   def ensure_not_referenced_by_any_line_item
-    if line_items.count.zero?
+    if line_items.count.zero?   #bc of the has_many call, it can find all the assoc line_items for ea product
       return true
     else
       errors.add(:base, 'Line Items present')

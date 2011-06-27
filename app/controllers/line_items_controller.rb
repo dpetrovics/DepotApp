@@ -40,11 +40,18 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.xml
   def create
-    @line_item = LineItem.new(params[:line_item])
-
+    @cart = current_cart
+    #params object holds all parameters passed in a browser request
+    product = Product.find(params[:product_id]) #params[:product_id] just has the id, not the actual object so we find it
+    #build a new line item relationship w the cart at one end, and product on the other end
+    #the argument is a hash, syntax :foreignkey => value to assign
+    @line_item = @cart.line_items.build(:product => product)
+    #so the above makes a line_item with the correct cart_id (for cart), and product_id (for product)
+    
+    
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to(@line_item, :notice => 'Line item was successfully created.') }
+        format.html { redirect_to(@line_item.cart, :notice => 'Line item was successfully created.') }
         format.xml  { render :xml => @line_item, :status => :created, :location => @line_item }
       else
         format.html { render :action => "new" }

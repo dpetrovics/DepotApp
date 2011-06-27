@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
             # an action on the controller
   
     def current_cart
-      Cart.find(session[:cart_id])   #get the :cart_id from session, and return corresponding cart
+      #looks in the carts table to find the cart with cart.id (which is stored in session[:cart_id])
+      Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound   #if the cart_id isnt found or is nil, create a new cart
       cart = Cart.create
       session[:cart_id] = cart.id
