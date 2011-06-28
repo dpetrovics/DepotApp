@@ -43,11 +43,7 @@ class LineItemsController < ApplicationController
     @cart = current_cart
     #params object holds all parameters passed in a browser request
     product = Product.find(params[:product_id]) #params[:product_id] just has the id, not the actual object so we find it
-    #build a new line item relationship w the cart at one end, and product on the other end
-    #the argument is a hash, syntax :foreignkey => value to assign
-    @line_item = @cart.line_items.build(:product => product)
-    #so the above makes a line_item with the correct cart_id (for cart), and product_id (for product)
-    
+    @line_item = @cart.add_product(product.id)
     
     respond_to do |format|
       if @line_item.save
