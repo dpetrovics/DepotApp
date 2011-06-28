@@ -12,4 +12,13 @@ class ApplicationController < ActionController::Base
       session[:cart_id] = cart.id
       cart
     end
+    
+    def increment_store_index_count
+      if (session[:counter].nil?)
+        session[:counter]=1
+      else
+        session[:counter]+=1
+      end
+      session[:counter]
+    end
 end

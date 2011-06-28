@@ -3,10 +3,13 @@
  <% end %>
 
 <h1>Your Pragmatic Catalog</h1>
+You've been here <%= pluralize(@index_view_count, 'times')%>
 
 <% @products.each do |product| %>
 	<div class="entry">
-		<%= image_tag(product.image_url) %>	<!-- creates an html <img> tag, argument is the img src -->
+		<!-- <%= image_tag(product.image_url) %>	 -->
+		
+		<%= link_to(image_tag(product.image_url), line_items_path(:product_id => product), :method =>:post) %>
 		<h3><%=product.title%></h3>
 		<%=sanitize product.description%>
 		<div class = "price_line">
