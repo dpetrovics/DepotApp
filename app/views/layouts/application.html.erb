@@ -16,6 +16,9 @@
 	
 	<div id="columns">
 		<div id="side">
+			<div id ="cart">
+				<%= render @cart %>
+			</div>
 			<%= link_to 'Home (Store)', store_path%> <br />
 			<%= link_to 'Products', products_path%> <br />
 			<%= link_to 'Line Items', line_items_path%> <br />

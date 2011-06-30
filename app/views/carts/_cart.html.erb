@@ -1,0 +1,11 @@
+<!-- cart is the item passed in (partial is called _cart.html.erb)-->
+<div class="cart_title">Your Cart</div> 
+<table>
+	<%= render(cart.line_items)%>		<!--_line_item.html.erb will show item quantity, title, and formatted price. Its ok for a partial (this file) to invoke another partial template-->
+	<tr class="total_line"> 
+		<td colspan="2">Total</td> 
+		<td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
+	</tr> 
+</table>
+
+<%= button_to 'Empty Cart', cart, :method=>:delete, :confirm => 'Are you sure?'%>
