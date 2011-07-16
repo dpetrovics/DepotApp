@@ -1,5 +1,4 @@
-<% if notice %> 
-<p id="notice"><%= notice %></p>
- <% end %>
+<%= render @cart %>	<!-- this invokes the partial template named _cart once for each cart -->
 
-<%= render @cart%>
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

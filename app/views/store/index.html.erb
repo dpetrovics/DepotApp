@@ -14,7 +14,7 @@ You've been here <%= pluralize(@index_view_count, 'times')%>
 		<%=sanitize product.description%>
 		<div class = "price_line">
 			<span class="price"><%= number_to_currency(product.price)%></span>
-			<!-- creates a button, displays 'add to cart', passes product -->
+			<!-- makes button, says 'add to cart', passes product to line_items:create (POST command) -->
 			<%= button_to 'Add to Cart', line_items_path(:product_id => product)%>
 			<!-- above line creates an html <form>, which contains an html <div> -->
 		</div>
