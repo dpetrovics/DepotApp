@@ -15,7 +15,8 @@ You've been here <%= pluralize(@index_view_count, 'times')%>
 		<div class = "price_line">
 			<span class="price"><%= number_to_currency(product.price)%></span>
 			<!-- makes button, says 'add to cart', passes product to line_items:create (POST command) -->
-			<%= button_to 'Add to Cart', line_items_path(:product_id => product)%>
+			<%= button_to 'Add to Cart', line_items_path(:product_id => product), :remote => true%>
+			<!-- remote=>true has the browser send an ajax request to our app -->
 			<!-- above line creates an html <form>, which contains an html <div> -->
 		</div>
 	</div>

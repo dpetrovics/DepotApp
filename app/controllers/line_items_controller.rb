@@ -45,9 +45,12 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id]) #params[:product_id] just has the id, not the actual object so we find it
     @line_item = @cart.add_product(product.id)
     
+    #respond to is a method with an optional block
     respond_to do |format|
       if @line_item.save
         format.html {redirect_to(store_url)}
+         # format.js prevents the browser from reloading the index page
+        format.js { @current_item = @line_item}
         format.xml  { render :xml => @line_item, :status => :created, :location => @line_item }
       else
         format.html { render :action => "new" }

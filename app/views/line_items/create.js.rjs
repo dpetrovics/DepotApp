@@ -1,0 +1,15 @@
+#this is an RJS file, a template that we use to handle AJAX requests
+
+#page is an instance of a javascript generator, a Rails class that knows how to create 
+#     JavaScript on the server and have it executed by the browser.
+
+#replace the content of the element on the current page with the id cart with the rendered 
+#    partial for a given cart. This simple RJS template then tells the browser to replace the 
+#   content of the element whose id="cart" with that HTML.
+
+page.replace_html('cart', render(@cart))
+
+#the code below will highlight the current item.
+page[:current_item].visual_effect :highlight, 
+                                  :startcolor => "#88ff88",
+                                  :endcolor => "#114411"
