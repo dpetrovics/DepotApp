@@ -22,7 +22,7 @@ class LineItemsControllerTest < ActionController::TestCase
     end
 
     #assigns gives access to variables assigned by views
-    assert_redirected_to cart_path(assigns(:line_item).cart)
+    assert_redirected_to store_path
   end
 
   test "should show line_item" do
@@ -46,5 +46,17 @@ class LineItemsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to line_items_path
+  end
+  
+  test "should create line_item via ajax" do
+    assert_difference('LineItem.count') do
+      xhr :post, :create, :product_id => products(:ruby).id  #XMLHttpRequest
+    end
+    #Instead of redirect, we expect a successful response containing a call to replace the HTML for the cart
+    assert_response :success
+    #in that HTML we expect to find a row with an id of current_item with a value matching Programming Ruby 1.9.
+    assert_select_rjs :replace_html, 'cart' do
+      assert_select 'tr#current_item td', /Programming Ruby 1.9/
+    end
   end
 end

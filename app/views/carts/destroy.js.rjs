@@ -1,0 +1,2 @@
+#this code will slide the cart down when we add our first item
+page[:cart].visual_effect :blind_up

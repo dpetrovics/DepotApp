@@ -77,6 +77,8 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(store_url) }
+       # format.js prevents the browser from reloading the index page, looks for destroy.js.rjs
+      format.js
       format.xml  { head :ok }
     end
   end
