@@ -1,7 +1,8 @@
+<% unless cart.line_items.empty?%>
 <div class="cart_title">Your Cart</div> 
 
 <table>
-	<%= render(cart.line_items)%>	<!-- this invokes the line_items partial template once for ea item -->
+	<%= render(cart.line_items)%>	<!-- invokes the line_items partial template once for ea item -->
 	
 	<tr class="total_line"> 
 		<td colspan="2">Total</td> 
@@ -10,3 +11,4 @@
 </table>
 
 <%= button_to 'Empty Cart', cart, :method=>:delete, :confirm => 'Are you sure?'%>
+<% end%>
