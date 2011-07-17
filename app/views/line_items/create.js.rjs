@@ -7,6 +7,10 @@
 #    partial for a given cart. This simple RJS template then tells the browser to replace the 
 #   content of the element whose id="cart" with that HTML.
 
+#when this rjs is run (when creating aline item), hide notices (like thank you for your order)
+# '#notice' is the CSS selector pattern we are looking for
+page.select("#notice").each { |notice| notice.hide }  
+
 page.replace_html('cart', render(@cart))
 
 #this code will slide the cart down when we add our first item
