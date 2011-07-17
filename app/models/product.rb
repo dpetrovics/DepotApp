@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   default_scope :order => 'title'   #will return product lists in alphabetical order
   
   has_many :line_items    #with multiple carts ea product could have many line items referencing it
+  has_many :orders, :through => :line_items #product is in a line item, which is in an order
   
   before_destroy :ensure_not_referenced_by_any_line_item  #'hook' method, called automatically at a certain pt in objects life
   
