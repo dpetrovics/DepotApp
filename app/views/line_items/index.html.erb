@@ -4,7 +4,8 @@
   <tr>
     <th>Product</th>
     <th>Quantity</th>
-    <th>Cart</th>
+    <th>Cart ID</th>
+    <th>Order ID</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= line_item.product_id %></td>
     <td><%= line_item.quantity %></td>
     <td><%= line_item.cart_id %></td>
+    <td><%= line_item.order_id %></td>
     <td><%= link_to 'Show', line_item %></td>
     <td><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
     <td><%= link_to 'Destroy', line_item, :confirm => 'Are you sure?', :method => :delete %></td>
